@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/env ruby
 # convertSTL.rb - Converts STL files between binary and ASCII encoding
 # by Chris Polis
 #
