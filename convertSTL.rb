@@ -35,7 +35,7 @@ begin
   
   # Read first line - check binary or ASCII
   tempLine = original.gets
-  if tempLine.include? "solid"
+  if tempLine.start_with? "solid"
     outFilename = ARGV[0].sub(/\.stl/i, '-binary.stl')
     puts "#{ARGV[0]} is in ASCII format, converting to BINARY: #{outFilename}"
     outFile = File.new(outFilename, "w")
