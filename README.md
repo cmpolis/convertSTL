@@ -6,10 +6,10 @@ I wrote this to save disk space and bandwidth when handling STL files. Some mode
 
 USAGE 
 ---------
-    $ ruby convertSTL.rb [filename of .stl to be converted]
+    $ ruby convertSTL.rb [filename(s) of .stl to be converted]
 or 'chmod +x' the script and run as:
     
-    $ ./convertSTL.rb [filename of .stl to be converted]
+    $ ./convertSTL.rb [filename(s) of .stl to be converted]
 The script will then translate the STL to the opposite encoding and save it as either `-ascii.stl` or `-binary.stl`
 
 AUTHOR
