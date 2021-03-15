@@ -15,6 +15,7 @@
 
 
 # Helper methods
+require 'fileutils'
 class Float
   def to_sn # to scientific notation
     "%E" % self
@@ -35,11 +36,14 @@ begin
   # Read all files matching arg, "foo.stl", "*.stl", "../stl/*", etc...
   ARGV.each do |originalFilename|
     original = File.new(originalFilename, "r")
-    
+    originalFoldername = File.dirname(originalFilename)
+    originalBasename = File.basename(originalFilename)
+
     # Read first line - check binary or ASCII
     tempLine = original.gets
     if tempLine.start_with? "solid"
-      outFilename = originalFilename.sub(/\.stl/i, '-binary.stl')
+      FileUtils.mkdir_p("#{originalFoldername}/output-binary")
+      outFilename = originalFilename.sub(/#{originalBasename}/i, 'output-binary/binary-'+originalBasename) 
       puts "#{originalFilename} is in ASCII format, converting to BINARY: #{outFilename}"
       outFile = File.new(outFilename, "w")
       outFile.write("\0" * 80) # 80 bit header - ignored
@@ -87,9 +91,10 @@ begin
       outFile.close
   
     else
-      outFilename = originalFilename.sub(/\.stl/i, '-ascii.stl')
+      FileUtils.mkdir_p("#{originalFoldername}/output-ascii")
+      outFilename = originalFilename.sub(/#{originalBasename}/i, 'output-ascii/ascii-'+originalBasename) 
       puts "#{originalFilename} is in BINARY format, converting to ASCII: #{outFilename}"
-      outFile = File.new(outFilename, "w")
+      outFile = File.new(outFilename, "w") 
       outFile.write("solid \n")
   
       # Binary STL format (from Wikipedia):
