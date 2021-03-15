@@ -6,6 +6,8 @@ I wrote this to save disk space and bandwidth when handling STL files. Some mode
 
 USAGE 
 ---------
+    $ ruby convertSTL.rb folder/*.stl (All Stl files in folder will be converted)
+    
     $ ruby convertSTL.rb [filename(s) of .stl to be converted]
 or 'chmod +x' the script and run as:
     
